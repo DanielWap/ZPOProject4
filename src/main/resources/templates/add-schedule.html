@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodaj termin zajęć</title>
+</head>
+<body>
+    <h1>Dodaj termin zajęć</h1>
+    <form action="#" th:action="@{/schedules}" th:object="${schedule}" method="post">
+        <!-- Tutaj powinny być pola do wprowadzenia informacji o terminie -->
+        <input type="submit" value="Dodaj">
+    </form>
+</body>
+</html>

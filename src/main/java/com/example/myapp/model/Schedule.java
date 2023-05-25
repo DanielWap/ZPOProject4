@@ -5,8 +5,10 @@ public class Schedule {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     private LocalDateTime meetingTime;
 
+    @NotNull
     @ManyToOne
     private Group group;
     

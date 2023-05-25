@@ -12,6 +12,7 @@ public class Student {
     private String lastName;
 
     @NotEmpty
+    @Column(unique = true)
     private String indexNumber;
 
     @ManyToOne
@@ -19,3 +20,10 @@ public class Student {
     
     // Getters and Setters
 }
+Pamiętaj, że to są tylko propozycje. Przed zastosowaniem zmian powinieneś ocenić, czy są one odpowiednie dla Twojego przypadku.
+
+
+
+
+
+

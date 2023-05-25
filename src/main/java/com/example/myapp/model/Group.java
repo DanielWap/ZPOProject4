@@ -5,8 +5,8 @@ public class Group {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy="group")
-    private List<Student> students;
+    @OneToMany(mappedBy="group", cascade = CascadeType.ALL)
+    private List<Student> students = new ArrayList<>();
 
     // Getters and Setters
 }

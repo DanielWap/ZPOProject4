@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edytuj Studenta</title>
+</head>
+<body>
+    <h1>Edytuj Studenta</h1>
+    <form action="#" th:action="@{'/students/update/' + ${student.id}}" th:object="${student}" method="post">
+        <label for="firstName">Imię:</label><br>
+        <input type="text" id="firstName" th:field="*{firstName}" required><br>
+        <label for="lastName">Nazwisko:</label><br>
+        <input type="text" id="lastName" th:field="*{lastName}" required><br>
+        <label for="indexNumber">Numer indeksu:</label><br>
+        <input type="text

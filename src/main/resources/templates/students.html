@@ -5,12 +5,14 @@
 </head>
 <body>
 <h1>Lista Studentów</h1>
+<button><a href="/students/new">Dodaj studenta</a></button>
 <table>
     <thead>
     <tr>
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>Numer indeksu</th>
+        <th>Akcje</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +20,10 @@
         <td th:text="${student.firstName}"></td>
         <td th:text="${student.lastName}"></td>
         <td th:text="${student.indexNumber}"></td>
+        <td>
+            <a th:href="@{'/students/edit/' + ${student.id}}">Edytuj</a>
+            <a th:href="@{'/students/delete/' + ${student.id}}">Usuń</a>
+        </td>
     </tr>
     </tbody>
 </table>
