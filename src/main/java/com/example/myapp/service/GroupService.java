@@ -1,3 +1,12 @@
+package com.example.myapp.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.myapp.model.Group;
+import com.example.myapp.repository.GroupRepository;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class GroupService {
 
@@ -11,9 +20,8 @@ public class GroupService {
         return groupRepository.findAll();
     }
 
-    public Group findById(Long id) {
-        return groupRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Group not found with id: " + id));
+    public Optional<Group> findById(Long id) {
+        return groupRepository.findById(id);
     }
 
     public Group save(Group group) {
@@ -21,9 +29,6 @@ public class GroupService {
     }
 
     public void delete(Long id) {
-        if (!groupRepository.existsById(id)) {
-            throw new EntityNotFoundException("Group not found with id: " + id);
-        }
         groupRepository.deleteById(id);
     }
 }

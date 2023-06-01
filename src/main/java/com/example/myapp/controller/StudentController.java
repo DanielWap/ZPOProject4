@@ -1,3 +1,19 @@
+package com.example.myapp.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.myapp.model.Student;
+import com.example.myapp.service.StudentService;
+
 @Controller
 public class StudentController {
 
@@ -21,7 +37,7 @@ public class StudentController {
     }
     
     @PostMapping("/students")
-    public String addStudent(@ModelAttribute("student") @Valid Student student, BindingResult bindingResult) {
+    public String addStudent(@ModelAttribute("student") @Validated Student student, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "add-student"; // jeżeli są błędy, powróć do formularza
         }
@@ -38,7 +54,7 @@ public class StudentController {
     }
     
     @PostMapping("/students/update/{id}")
-    public String updateStudent(@PathVariable("id") long id, @Valid Student student, 
+    public String updateStudent(@PathVariable("id") long id, @Validated Student student, 
                                 BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             student.setId(id);

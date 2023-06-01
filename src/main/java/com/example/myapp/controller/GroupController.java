@@ -1,3 +1,19 @@
+package com.example.myapp.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.myapp.model.Group;
+import com.example.myapp.service.GroupService;
+
 @Controller
 public class GroupController {
 
@@ -21,7 +37,7 @@ public class GroupController {
     }
 
     @PostMapping("/groups")
-    public String addGroup(@ModelAttribute("group") @Valid Group group, BindingResult bindingResult) {
+    public String addGroup(@ModelAttribute("group") @Validated Group group, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "add-group";
         }
@@ -38,7 +54,7 @@ public class GroupController {
     }
 
     @PostMapping("/groups/update/{id}")
-    public String updateGroup(@PathVariable("id") long id, @Valid Group group,
+    public String updateGroup(@PathVariable("id") long id, @Validated Group group,
                               BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             group.setId(id);

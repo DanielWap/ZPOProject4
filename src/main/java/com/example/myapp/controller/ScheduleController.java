@@ -1,3 +1,19 @@
+package com.example.myapp.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.myapp.model.Schedule;
+import com.example.myapp.service.ScheduleService;
+
 @Controller
 public class ScheduleController {
 
@@ -21,7 +37,7 @@ public class ScheduleController {
     }
 
     @PostMapping("/schedules")
-    public String addSchedule(@ModelAttribute("schedule") @Valid Schedule schedule, BindingResult bindingResult) {
+    public String addSchedule(@ModelAttribute("schedule") @Validated Schedule schedule, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "add-schedule";
         }
@@ -38,7 +54,7 @@ public class ScheduleController {
     }
 
     @PostMapping("/schedules/update/{id}")
-    public String updateSchedule(@PathVariable("id") long id, @Valid Schedule schedule,
+    public String updateSchedule(@PathVariable("id") long id, @Validated Schedule schedule,
                                  BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             schedule.setId(id);
@@ -52,7 +68,7 @@ public class ScheduleController {
     public String deleteSchedule(@PathVariable("id") long id, Model model) {
         Schedule schedule = scheduleService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid schedule Id:" + id));
-        scheduleService.delete(id);
+        scheduleService.deleteById(id);
         model.addAttribute("schedules", scheduleService.findAll());
         return "schedules";
     }

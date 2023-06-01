@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edytuj termin zajęć</title>
+</head>
+<body>
+    <h1>Edytuj termin zajęć</h1>
+    <form action="#" th:action="@{'/schedules/update/' + ${schedule.id}}" th:object="${schedule}" method="post">
+        <!-- Tutaj powinny być pola do wprowadzenia informacji o terminie -->
+        <input type="submit" value="Zaktualizuj">
+    </form>
+</body>
+</html>

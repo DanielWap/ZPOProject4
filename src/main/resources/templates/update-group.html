@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edytuj Grupę</title>
+</head>
+<body>
+    <h1>Edytuj Grupę</h1>
+    <form action="#" th:action="@{'/groups/update/' + ${group.id}}" th:object="${group}" method="post">
+        <label for="name">Nazwa Grupy:</label><br>
+        <input type="text" id="name" th:field="*{name}" required><br>
+        <input type="submit" value="Zaktualizuj">
+    </form>
+</body>
+</html>

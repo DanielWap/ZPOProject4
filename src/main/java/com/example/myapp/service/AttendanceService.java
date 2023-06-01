@@ -1,3 +1,12 @@
+package com.example.myapp.service;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.myapp.model.Attendance;
+import com.example.myapp.repository.AttendanceRepository;
+
+import java.util.List;
 @Service
 public class AttendanceService {
 
@@ -11,5 +20,16 @@ public class AttendanceService {
         return attendanceRepository.findAll();
     }
 
-    // i inne metody takie jak dodawanie, usuwanie obecności itp.
+    public Optional<Attendance> findById(Long id) {
+        return attendanceRepository.findById(id);
+    }
+
+    public Attendance save(Attendance attendance) {
+        return attendanceRepository.save(attendance);
+    }
+
+    public void delete(Long id) {
+        attendanceRepository.deleteById(id);
+    }
 }
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Grup</title>
+</head>
+<body>
+    <h1>Lista Grup</h1>
+    <a href="/groups/new">Dodaj Grupę</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nazwa Grupy</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="group : ${groups}">
+                <td th:text="${group.name}"></td>
+                <td>
+                    <a th:href="@{'/groups/edit/' + ${group.id}}">Edytuj</a>
+                    <a th:href="@{'/groups/delete/' + ${group.id}}">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

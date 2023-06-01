@@ -1,3 +1,12 @@
+package com.example.myapp.service;
+
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
+import com.example.myapp.model.Student;
+import com.example.myapp.repository.StudentRepository;
+
 @Service
 public class StudentService {
 
@@ -11,5 +20,15 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    // i inne metody takie jak dodawanie, usuwanie studentów itp.
+    public Optional<Student> findById(Long id) {
+        return studentRepository.findById(id);
+    }
+
+    public Student save(Student student) {
+        return studentRepository.save(student);
+    }
+
+    public void delete(Long id) {
+        studentRepository.deleteById(id);
+    }
 }

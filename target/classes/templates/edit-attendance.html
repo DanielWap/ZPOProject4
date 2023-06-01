@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edytuj Obecność</title>
+</head>
+<body>
+    <h1>Edytuj Obecność</h1>
+    <form action="#" th:action="@{'/attendances/update/' + ${attendance.id}}" th:object="${attendance}" method="post">
+        <label for="date">Data:</label><br>
+        <input type="date" id="date" th:field="*{date}" required><br>
+        <label for="student">Student:</label><br>
+        <!-- Tutaj powinno być pole do wyboru studenta -->
+        <label for="isPresent">Obecność:</label><br>
+        <input type="checkbox" id="isPresent" th:field="*{isPresent}"><br>
+        <input type="submit" value="Zaktualizuj">
+    </form>
+</body>
+</html>

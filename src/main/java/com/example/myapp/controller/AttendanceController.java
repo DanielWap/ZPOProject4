@@ -1,3 +1,18 @@
+package com.example.myapp.controller;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.myapp.model.Attendance;
+import com.example.myapp.service.AttendanceService;
+
 @Controller
 public class AttendanceController {
 
@@ -21,7 +36,7 @@ public class AttendanceController {
     }
 
     @PostMapping("/attendances")
-    public String addAttendance(@ModelAttribute("attendance") @Valid Attendance attendance, BindingResult bindingResult) {
+    public String addAttendance(@ModelAttribute("attendance") @Validated Attendance attendance, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "add-attendance";
         }
@@ -38,7 +53,7 @@ public class AttendanceController {
     }
 
     @PostMapping("/attendances/update/{id}")
-    public String updateAttendance(@PathVariable("id") long id, @Valid Attendance attendance,
+    public String updateAttendance(@PathVariable("id") long id, @Validated Attendance attendance,
                                    BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             attendance.setId(id);

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Obecności</title>
+</head>
+<body>
+    <h1>Lista Obecności</h1>
+    <a href="/attendances/new">Dodaj Obecność</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Student</th>
+                <th>Obecność</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="attendance : ${attendances}">
+                <td th:text="${attendance.date}"></td>
+                <td th:text="${attendance.student.firstName} + ' ' + ${attendance.student.lastName}"></td>
+                <td th:text="${attendance.isPresent ? 'Obecny' : 'Nieobecny'}"></td>
+                <td>
+                    <a th:href="@{'/attendances/edit/' + ${attendance.id}}">Edytuj</a>
+                    <a th:href="@{'/attendances/delete/' + ${attendance.id}}">Usuń</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
